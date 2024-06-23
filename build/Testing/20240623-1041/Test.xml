@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-MSBuild"
+	BuildStamp="20240623-1041-Experimental"
+	Name="LAPTOP-NLIK1G37"
+	Generator="ctest-3.30.0-rc3"
+	CompilerName="C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30037/bin/Hostx64/x86/cl.exe"
+	CompilerVersion="19.29.30040.0"
+	OSName="Windows"
+	Hostname="LAPTOP-NLIK1G37"
+	OSRelease=" Personal"
+	OSVersion=" (Build 22621)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="8"
+	ProcessorCacheSize="96"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="22951"
+	TotalPhysicalMemory="14247"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2096"
+	>
+	<Testing>
+		<StartDateTime>Jun 23 16:11 India Standard Time</StartDateTime>
+		<StartTestTime>1719139304</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 23 16:11 India Standard Time</EndDateTime>
+		<EndTestTime>1719139304</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
