@@ -8,8 +8,12 @@
 template <typename Key>
 class LRUCachePolicy : public ICachePolicy<Key>
 {
-  public:
+    private:
     using lru_iterator = typename std::list<Key>::iterator;
+    std::list<Key> lru_queue;
+    std::unordered_map<Key, lru_iterator> key_finder;
+  public:
+    
 
     LRUCachePolicy() = default;
     ~LRUCachePolicy() = default;
@@ -25,20 +29,18 @@ class LRUCachePolicy : public ICachePolicy<Key>
         lru_queue.splice(lru_queue.begin(), lru_queue, key_finder[key]);
     }
 
-    void Erase(const Key &) noexcept override
+    void Erase(const Key &) override
     {
         key_finder.erase(lru_queue.back());
         lru_queue.pop_back();
     }
 
-    const Key &ReplCandidate() const noexcept override
+    const Key &ReplCandidate() const override
     {
         return lru_queue.back();
     }
 
-  private:
-    std::list<Key> lru_queue;
-    std::unordered_map<Key, lru_iterator> key_finder;
+
 };
 
 #endif
