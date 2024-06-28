@@ -10,23 +10,6 @@ class ICachePolicy
     virtual void Erase(const Key &key) = 0;
     virtual const Key &ReplCandidate() const = 0;
 };
-// template <typename Key>
-// class CacheFactory{
-//   CacheFactory() = default;
-//   ~CacheFactory() = default;
-//   public:
-//   ICachePolicy<Key>* getPolicyInstance(std::string s)
-//   {
-//     if(s=="LRUCachePolicy")
-//     {
-//       return new LRUCachePolicy<Key>();
-
-//     }
-//     return nullptr;
-//   }
-
-
-// };
 
 
 #endif

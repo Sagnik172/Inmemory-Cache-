@@ -4,6 +4,7 @@
 #include "cache_policy.hpp"
 #include "lfu_cache_policy.hpp"
 #include "fifo_cache_policy.hpp"
+#include "lifo_cache_policy.hpp"
 template<typename Key>
 class CacheFactory{
 
@@ -12,12 +13,14 @@ class CacheFactory{
     ~CacheFactory() = default;
     static ICachePolicy<Key> * getPolicyInstance(std::string policyname)
     {
-        if(policyname=="LRU")
+        if(policyname == "LRU")
             return new LRUCachePolicy<Key>();
-        else if(policyname=="LFU")
+        else if(policyname == "LFU")
             return new LRUCachePolicy<Key>();
-        else if(policyname=="FIFO")
+        else if(policyname == "FIFO")
             return new FIFOCachePolicy<Key>();
+        else if(policyname == "LIFO")
+            return new LIFOCachePolicy<Key>();
         return new LRUCachePolicy<Key>();
     }
 

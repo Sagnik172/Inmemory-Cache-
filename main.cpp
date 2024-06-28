@@ -1,12 +1,10 @@
 #include <iostream>
 #include "cache.hpp"
-#include "lru_cache_policy.hpp"
 #include <pthread.h>
 #include<iostream>
-#include <vector>
-using namespace std;
-#include "cache.hpp"
 #include <unistd.h> 
+#include<vector>
+using namespace std;
 
 void* thread_func_put(void* arg)
 {
@@ -37,22 +35,23 @@ int main(){
   std::cout<<"Enter choice: "<<std::endl;
   int ch;
   cin>>ch;
-  if( ch<= 0 or ch>3)
+  if(ch <= 0 or ch > 4)
     ch=1;
   ch--;
-  vector<string> choices = {"LRU", "LFU" , "FIFO"};
+  vector<string> choices = {"LRU", "LFU" , "FIFO", "LIFO"};
   fixed_sized_cache<int, std::string> cache(CACHE_SIZE, choices[ch]);
 
-    pthread_t t1, t2, t3, t4, t5, t6, t7, t8;
+    pthread_t t1, t2, t3, t4, t5, t6, t7, t8, t9;
 
     auto params1 = std::make_pair(&cache, std::make_pair(1, string("one")));
     auto params2 = std::make_pair(&cache, std::make_pair(2, string("two")));
     auto params3 = std::make_pair(&cache, std::make_pair(3, string("three")));
-    auto params4 = std::make_pair(&cache, std::make_pair(4, string("four")));
+    auto params4 = std::make_pair(&cache, std::make_pair(1, string("one")));
     auto params5 = std::make_pair(&cache, 1);
     auto params6 = std::make_pair(&cache, 2);
     auto params7 = std::make_pair(&cache, 3);
     auto params8 = std::make_pair(&cache, 4);
+    auto params9 = std::make_pair(&cache, std::make_pair(4, string("four")));
 
 
     // cout<<params1.second.first<<endl;
@@ -60,6 +59,8 @@ int main(){
     pthread_create(&t2, nullptr, thread_func_put, &params2);
     pthread_create(&t3, nullptr, thread_func_put, &params3);
     pthread_create(&t4, nullptr, thread_func_put, &params4);
+    pthread_create(&t9, nullptr, thread_func_put, &params9);
+
 
     std::cout << "Sleeping for 3 seconds..." << std::endl;
     sleep(3);
