@@ -52,5 +52,12 @@ int main() {
     return 0;
 }
 ```
+### Running the code
+In order to run the code, use the following command:
+```
+g++ -o output_executable main.cpp -pthread
+```
+Then, execute the output_executable.exe file.
+
 ### Contact
 For any questions or suggestions, feel free to contact me at sagnikdas23012002@gmail.com.
