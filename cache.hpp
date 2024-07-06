@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <unordered_map>
 #include <pthread.h>
-
+#include <unistd.h>
 
 template <typename V>
 using WrappedValue = std::shared_ptr<V>;
@@ -66,13 +66,17 @@ class fixed_sized_cache
 
                 Erase(disp_candidate_key);
             }
-            std::cout << "put : (" << key << " added, value " << value << ")" << std::endl;
+            std::cout << "put : (" << key ;
+            sleep(2);
+            std::cout<<" added, value " << value << ")" << std::endl;
 
             Insert(key, value);
         }
         else
         {
-            std::cout << "put : (" << key << " updated , value " << value << ")" << std::endl;
+            std::cout << "put : (" << key;
+            sleep(2);
+            std::cout<<" updated , value " << value << ")" << std::endl;
             Update(key, value);
         }
         pthread_mutex_unlock(&cache_mutex);
@@ -94,14 +98,19 @@ class fixed_sized_cache
         auto elem = getIter(key);
         if (elem.second)
         {
-            std::cout << "get : (" << key << ", " << *elem.first->second << ")" << std::endl;
+            std::cout << "get : (" << key << ", ";
+            sleep(2);
+            std::cout << *elem.first->second << ")" << std::endl;
             pthread_mutex_unlock(&cache_mutex);
             return elem.first->second;
         }
         else
         {
+            std::cout << "get : (" << key ;
+            sleep(2);
+            std::cout<<"  not found )" << std::endl;
             pthread_mutex_unlock(&cache_mutex);
-            std::cout << "get : (" << key << "  not found )" << std::endl;
+            
             throw std::range_error{"No such element in the cache"};
         }
     }

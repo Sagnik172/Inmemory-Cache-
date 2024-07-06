@@ -40,6 +40,7 @@ int main(){
   ch--;
   vector<string> choices = {"LRU", "LFU" , "FIFO", "LIFO"};
   fixed_sized_cache<int, std::string> cache(CACHE_SIZE, choices[ch]);
+    cache.Put(5,"five");
 
     pthread_t t1, t2, t3, t4, t5, t6, t7, t8, t9;
 
@@ -62,7 +63,7 @@ int main(){
     pthread_create(&t9, nullptr, thread_func_put, &params9);
 
 
-    std::cout << "Sleeping for 3 seconds..." << std::endl;
+    // std::cout << "Sleeping for 3 seconds..." << std::endl;
     sleep(3);
 
     pthread_create(&t5, nullptr, thread_func_get, &params5);
